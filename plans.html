@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Planes Disponibles</h1>
+    <ul>
+        {% for plan in plans %}
+            <li>
+                <h2>{{ plan.name }}</h2>
+                <p>{{ plan.description }}</p>
+                <p>Precio: ${{ plan.price }}</p>
+                <form action="{{ url_for('add_to_cart', plan_id=plan.id) }}" method="post">
+                    <button type="submit">Agregar al Carrito</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
